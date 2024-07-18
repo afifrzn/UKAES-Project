@@ -51,8 +51,10 @@
                     @foreach ($obat as $obat)
                         <option value="{{ $obat->id }}"  @selected($obat->id == $pasien->obat_id)>{{ $obat->nama_obat }}</option>
                     @endforeach
+
+                    
                 </select>
-                @error('author')
+                @error('obat')
                     <span class="invalid-feedback">{{ $message }}</span>
                 @enderror
             </div>

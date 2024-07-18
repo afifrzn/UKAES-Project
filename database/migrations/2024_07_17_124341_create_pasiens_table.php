@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_pasien');
             $table->string('kelas');
             $table->string('keluhan');
-            $table->foreignId('obat_id')->nullable()->constrained();
+            $table->foreignId('obat_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

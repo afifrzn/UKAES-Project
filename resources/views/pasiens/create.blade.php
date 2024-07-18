@@ -43,14 +43,14 @@
             <div class="mb-3">
                 <label class="form-label">Obat</label>
                 <select name="obat_id" id="" class="form-control">
-
+                     <option value="">Pilih Obat</option>
                     @foreach ($obat as $obat)
-                        <option value="{{ $obat->id }}">{{ $obat->nama_obat }}</option>
+                        <option value="{{ $obat->id }}">{{ $obat->nama_obat}}</option>
                     @endforeach
-                </select>
-                @error('obat')
+                    @error('obat')
                     <span class="invalid-feedback">{{ $message }}</span>
                 @enderror
+                </select>
             </div>
             <div class="mb-3">
                 <input type="submit" value="Tambah" class="btn btn-primary">

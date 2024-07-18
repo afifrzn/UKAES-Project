@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('obats', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_obat');
+            $table->string('nama_obat')->nullable();
             $table->integer('stok_obat');
             $table->string('kegunaan');
             $table->timestamps();

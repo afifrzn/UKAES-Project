@@ -34,7 +34,8 @@ class PasienController extends Controller
         $this->validate($request, [
             'nama_pasien' => ['required'],
             'kelas' => ['required'],
-            'keluhan' => ['required']
+            'keluhan' => ['required'],
+            'obat_id' => ['nullable'],
         ], [
             'nama_pasien.required' => 'Kolom Nama Tidak Boleh Kosong',
             'kelas.required' => 'Kolom Kelas Tidak Boleh Kosong',
@@ -46,7 +47,7 @@ class PasienController extends Controller
         $pasien->nama_pasien = $request->nama_pasien;
         $pasien->kelas = $request->kelas;
         $pasien->keluhan = $request->keluhan;
-        $pasien->obat_id = $request->obat_id;
+        $pasien->obat_id = $request->obat_id ?: null;
 
         $pasien->save();
 

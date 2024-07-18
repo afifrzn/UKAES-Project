@@ -7,7 +7,7 @@
 
 
 @push('page-action')
-  <a href="{{ route('obat.create') }}" class="btn btn-primary">Tambah Obat</a>
+  <a href="{{ route('obat.create') }}" class="btn btn-danger">Tambah Obat</a>
 @endpush
 
 @section('content')

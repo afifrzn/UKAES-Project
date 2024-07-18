@@ -7,7 +7,7 @@
 
 
 @push('page-action')
-  <a href="{{ route('pasien.create') }}" class="btn btn-primary">Tambah Pasien</a>
+  <a href="{{ route('pasien.create') }}" class="btn btn-danger">Tambah Pasien</a>
 @endpush
 
 @section('content')
@@ -39,8 +39,9 @@
                             {{ $pasien->keluhan }}
                           </td>
                           <td>
-                            {{ $pasien->obatName->nama_obat }}
+                            {{ $pasien->obatName ? $pasien->obatName->nama_obat : 'Tidak ada obat' }}
                           </td>
+
                           <td>
                             <a href="{{ route('pasien.edit', $pasien->id) }}">Edit</a>
                             <form action="{{ route('pasien.destroy', $pasien->id) }}" method="post">
