@@ -45,9 +45,9 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-label">Obat</label>
+                <label class="form-label">Obat (Jika Perlu)</label>
                 <select name="obat_id" id="" class="form-control">
-
+                    <option value="">Pilih Obat</option>
                     @foreach ($obat as $obat)
                         <option value="{{ $obat->id }}"  @selected($obat->id == $pasien->obat_id)>{{ $obat->nama_obat }}</option>
                     @endforeach
@@ -59,7 +59,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <input type="submit" value="Edit" class="btn btn-primary">
+                <input type="submit" value="Edit" class="btn btn-danger">
             </div>
             </form>
         </div>

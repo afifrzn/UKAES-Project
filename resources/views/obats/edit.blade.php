@@ -45,7 +45,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <input type="submit" value="Edit" class="btn btn-primary">
+                <input type="submit" value="Edit" class="btn btn-danger">
             </div>
             </form>
         </div>

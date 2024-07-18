@@ -12,7 +12,7 @@
 
 @section('content')
 <form action="{{ route('pasien.index') }}" method="GET">
-<input type="search" name="search" class="form-control" id="search"style="width: 380px"><br>
+<input type="search" name="search" class="form-control" id="search"style="width: 380px" placeholder="Cari"><br>
 </form>
     <div class="card">
                   <div class="table-responsive">

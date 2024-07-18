@@ -30,31 +30,43 @@ class PasienController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $this->validate($request, [
-            'nama_pasien' => ['required'],
-            'kelas' => ['required'],
-            'keluhan' => ['required'],
-            'obat_id' => ['nullable'],
-        ], [
-            'nama_pasien.required' => 'Kolom Nama Tidak Boleh Kosong',
-            'kelas.required' => 'Kolom Kelas Tidak Boleh Kosong',
-            'keluhan.required' => 'Kolom Keluhan Tidak Boleh Kosong'
-        ]);
+{
+    $this->validate($request, [
+        'nama_pasien' => ['required'],
+        'kelas' => ['required'],
+        'keluhan' => ['required'],
+        'obat_id' => ['nullable'],
+    ], [
+        'nama_pasien.required' => 'Kolom Nama Tidak Boleh Kosong',
+        'kelas.required' => 'Kolom Kelas Tidak Boleh Kosong',
+        'keluhan.required' => 'Kolom Keluhan Tidak Boleh Kosong'
+    ]);
 
-        $pasien = new Pasien();
+    $obat = Obat::find($request->obat_id);
 
-        $pasien->nama_pasien = $request->nama_pasien;
-        $pasien->kelas = $request->kelas;
-        $pasien->keluhan = $request->keluhan;
-        $pasien->obat_id = $request->obat_id ?: null;
-
-        $pasien->save();
-
-        session()->flash('success', 'Data Berhasil Ditambahkan');
-
-        return redirect()->route('pasien.index');
+    if ($obat) {
+        if ($obat->stok_obat > 0) {
+            $obat->stok_obat -= 1;
+            $obat->save();
+        } else {
+            return redirect()->back()->withErrors(['error' => 'Stok obat tidak mencukupi.']);
+        }
     }
+
+    $pasien = new Pasien();
+
+    $pasien->nama_pasien = $request->nama_pasien;
+    $pasien->kelas = $request->kelas;
+    $pasien->keluhan = $request->keluhan;
+    $pasien->obat_id = $request->obat_id ?: null;
+
+    $pasien->save();
+
+    session()->flash('success', 'Data Berhasil Ditambahkan');
+
+    return redirect()->route('pasien.index');
+}
+
 
     public function show($id)
     {

@@ -41,11 +41,11 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-label">Obat</label>
+                <label class="form-label">Obat (Jika Perlu)</label>
                 <select name="obat_id" id="" class="form-control">
                      <option value="">Pilih Obat</option>
                     @foreach ($obat as $obat)
-                        <option value="{{ $obat->id }}">{{ $obat->nama_obat}}</option>
+                        <option value="{{ $obat->id }}">{{ $obat->nama_obat}} Stok : {{ $obat->stok_obat }}</option>
                     @endforeach
                     @error('obat')
                     <span class="invalid-feedback">{{ $message }}</span>
@@ -53,7 +53,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <input type="submit" value="Tambah" class="btn btn-primary">
+                <input type="submit" value="Tambah" class="btn btn-danger">
             </div>
             </form>
         </div>

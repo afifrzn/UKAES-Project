@@ -41,7 +41,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <input type="submit" value="Tambah" class="btn btn-primary">
+                <input type="submit" value="Tambah" class="btn btn-danger">
             </div>
             </form>
         </div>
