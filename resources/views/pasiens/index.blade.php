@@ -1,17 +1,17 @@
 @extends('templates.default')
 
 @php
-  $title = "Daftar Buku";
-  $preTitle = "Data Perpustakaan"
+  $title = "Daftar Pasien";
+  $preTitle = "Data UKS"
 @endphp
 
 
 @push('page-action')
-  <a href="{{ route('book.create') }}" class="btn btn-primary">Tambah Buku</a>
+  <a href="{{ route('pasien.create') }}" class="btn btn-primary">Tambah Pasien</a>
 @endpush
 
 @section('content')
-<form action="{{ route('book.index') }}" method="GET">
+<form action="{{ route('pasien.index') }}" method="GET">
 <input type="search" name="search" class="form-control" id="search"style="width: 380px"><br>
 </form>
     <div class="card">
@@ -19,24 +19,31 @@
                     <table class="table table-vcenter card-table">
                       <thead>
                         <tr>
-                          <th>Title</th>
-                          <th>Cover</th>
-
+                          <th>Nama Pasien</th>
+                          <th>Kelas</th>
+                          <th>Keluhan</th>
+                          <th>Obat</th>
                           <th class="w-1"></th>
                         </tr>
                       </thead>
                       <tbody>
-                     @foreach ($Book as $book)
+                     @foreach ($pasien as $pasien)
                             <tr>
-                          <td>
-                            <a href="{{ route('book.show', $book->id) }}">{{ $book->title }}</a>
+                         <td>
+                            {{ $pasien->nama_pasien }}
+                          </td>
+                           <td>
+                            {{ $pasien->kelas }}
+                          </td>
+                           <td>
+                            {{ $pasien->keluhan }}
                           </td>
                           <td>
-                           <img src="{{ asset('storage/' .$book->cover) }}" alt="" width="20%">
+                            {{ $pasien->obatName->nama_obat }}
                           </td>
                           <td>
-                            <a href="{{ route('book.edit', $book->id) }}">Edit</a>
-                            <form action="{{ route('book.destroy', $book->id) }}" method="post">
+                            <a href="{{ route('pasien.edit', $pasien->id) }}">Edit</a>
+                            <form action="{{ route('pasien.destroy', $pasien->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Delete" class="btn btn-danger btn-sm">

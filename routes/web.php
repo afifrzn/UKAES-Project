@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PublisherController;
-use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\ObatController;
+use App\Http\Controllers\PasienController;
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 
@@ -22,16 +21,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/publisher', [PublisherController::class, 'index'])->name('publisher.index');
-// Route::get('/publisher/create', [PublisherController::class, 'create'])->name('publisher.create');
-// Route::post('/publisher', [PublisherController::class, 'store'])->name('publisher.store');
-// Route::get('/publisher/{id}/edit', [PublisherController::class, 'edit'])->name('publisher.edit');
-// Route::put('/publisher/{id}', [PublisherController::class, 'update'])->name('publisher.update');
-// Route::delete('/publisher/{id}', [PublisherController::class, 'destroy'])->name('publisher.destroy');
-
-Route::resource('publisher', PublisherController::class)->middleware('auth');
-Route::resource('author', AuthorController::class)->middleware('auth');
-Route::resource('book', BookController::class)->middleware('auth');
+Route::resource('obat', ObatController::class)->middleware('auth');
+Route::resource('pasien', PasienController::class)->middleware('auth');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

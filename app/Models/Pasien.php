@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Author extends Model
+class Pasien extends Model
 {
     use HasFactory;
 
-    public function books(){
-        return $this->hasMany(Book::class);
+     public function obatName()
+    {
+        return $this->belongsTo(Obat::class, 'obat_id');
     }
 }
