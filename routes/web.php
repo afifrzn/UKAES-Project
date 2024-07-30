@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[ObatController::class, 'index']);
+Route::get('/', function () {
+    return view('user');
+});
 
 Route::resource('obat', ObatController::class)->middleware('auth');
 Route::resource('pasien', PasienController::class)->middleware('auth');
