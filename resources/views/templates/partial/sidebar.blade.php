@@ -5,7 +5,7 @@
           </button>
           <h1 class="navbar-brand">
             <a href="{{ route('obat.index') }}">
-              <img src="./static/logouks.png" width="50" height="50" alt="">
+              <img src="{{ asset('uksnew.png') }}" width="50" height="50">
             </a>
           </h1>
           <div class="collapse navbar-collapse" id="sidebar-menu">
